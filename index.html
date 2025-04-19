@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Count</title>
+    <style>
+        body {
+            background-color: color-mix(in srgb, green 19%, yellow 19%);
+        }
+
+        div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 25%;
+        }
+
+        div h3 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        #box {
+            margin-left: 16%;
+            width: 300px;
+            height: 150px;
+            border: solid green 1px;
+            border-radius: 10px;
+            outline: none;
+
+        }
+        #box:focus{
+            border: solid blue 1px;
+        }
+        #max{
+            padding-left: 60%;
+        }
+        #warning{
+            padding-left: 18%;
+            color: red;
+        }
+        @media screen and (min-width:600px) {
+
+            div{
+                width: 500px;
+                margin-top: 10%;
+                margin-left: 30%;
+            }
+            #max{
+                padding-left: 55% ;
+            }
+            
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>Message Box (200 Characters Max Limit)</h3>
+        <textarea name="textarea" id="box" placeholder="Enter your text....."></textarea>
+        <p id="max"> 0 / 200 characters</p>
+        <p id="warning"></p>
+    </div>
+
+    <script>
+        var box = document.getElementById("box")
+        var max = document.getElementById("max")
+        var warning = document.getElementById("warning")
+
+        box.addEventListener("keypress", function () {
+
+            var charcount = box.value.length
+            if (charcount <= 200) {
+
+                max.textContent = +charcount + "/200 characters"
+
+            }
+            else {
+                 warning.textContent = "You have reached the character limit!!!"
+                 box.disabled = true;
+                
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
